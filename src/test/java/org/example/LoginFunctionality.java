@@ -1,15 +1,4 @@
-//package org.example;
-//
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//
-//public class loginFunctionality {
-//    public static void main(String[] args) {
-//        WebDriver driver = new ChromeDriver();
-//        System.setProperty((“WebDriver.chrome.driver”,https://opensource-demo.orangehrmlive.com/web/index.php/auth/login)
-//        // }
-//
-//}
+
 package org.example;
 
 
@@ -20,24 +9,30 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
     public class LoginFunctionality {
 
         public static void main(String[] args) {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaviy\\Downloads\\chromedriver_win32 (3)");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaviy\\Desktop\\drivers\\chrome-win64\\chrome.exe");
             WebDriver driver = new ChromeDriver();
-            driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
+            driver.manage().window().maximize();
+            //driver.get("https://ecommerce-playground.lambdatest.io/");
+            String url = "https://ecommerce-playground.lambdatest.io/";
+            driver.get(url);
+            //driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            //click on login btn
+            driver.findElement(By.xpath("//a[contains(text(),'Login')]")).click();
             // Finding UserName
-            driver.findElement(By.cssSelector("input[name='username']")).sendKeys("Admin");
-            driver.findElement(By.cssSelector("input[name='password']")).sendKeys("admin123");
-            driver.findElement(By.xpath("//button[@type='submit']")).click();
-            driver.findElement(By.xpath("//span[@class='oxd-text oxd-text--span oxd-main-menu-item--name']")).click();
-            driver.findElement(By.xpath("//i[@class='oxd-icon bi-plus oxd-button-icon']")).click();
+            driver.findElement(By.id("input-email")).sendKeys("kaviyamahendran98@gmail.com");
 
+            // Enter your login password
+            driver.findElement(By.id("input-password")).sendKeys("kaviya@10");
 
+            //click submit btn
+            driver.findElement(By.xpath("//input[@type='submit']")).click();
 
         }
 
